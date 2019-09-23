@@ -1,0 +1,15 @@
+{
+  "name": "wootingbinaryclock",
+  "version": "1.0.0",
+  "description": "binary clock for wooting two analog keyboard using RGB lighting",
+  "main": "app.js",
+  "dependencies": {
+    "colors": "^1.4.0"
+  },
+  "devDependencies": {},
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "author": "Chris Struck",
+  "license": "ISC"
+}
