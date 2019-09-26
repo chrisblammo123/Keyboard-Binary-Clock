@@ -4,12 +4,26 @@
   "description": "binary clock for wooting two analog keyboard using RGB lighting",
   "main": "app.js",
   "dependencies": {
-    "colors": "^1.4.0"
+    "colors": "^1.4.0",
+    "moment": "^2.24.0"
   },
   "devDependencies": {},
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1"
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "install": "node-gyp rebuild"
   },
   "author": "Chris Struck",
-  "license": "ISC"
+  "license": "ISC",
+  "gypfile": true,
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/chrisblammo123/Keyboard-Binary-Clock.git"
+  },
+  "keywords": [
+    "wooting"
+  ],
+  "bugs": {
+    "url": "https://github.com/chrisblammo123/Keyboard-Binary-Clock/issues"
+  },
+  "homepage": "https://github.com/chrisblammo123/Keyboard-Binary-Clock#readme"
 }
