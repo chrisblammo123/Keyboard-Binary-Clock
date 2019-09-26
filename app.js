@@ -21,14 +21,22 @@ colors.setTheme({
 
 const keyboardConnected = wootingRgb.wooting_rgb_kbd_connected()
 
-/*const updateTime = (curentTime) => {
+//Sets the keyboard to a white color.
+for (let row = 0; row < 6; row++) {
+	for (let column = 0; column < 21; column++) {
+		wootingRgb.wooting_rgb_array_set_single(row, column, 255, 255, 255);
+	}
+}
 
-};*/
+//Updates the keyboard to be white
+wootingRgb.wooting_rgb_array_update_keyboard()
 
+//Checks if the keyboard is connected, then runs the rest of the program (if it is conneceted).
 if (!keyboardConnected) {
 	console.log("Keyboard not connected".error);
 }
 else {
+	//Disgustingly large object with the key coordinates
 	const keySettings = {
 		secondOnesDigit: {
 			row: 4,
@@ -112,6 +120,7 @@ else {
 		}
 	};
 
+	//Disgustingly large object with the time colors
 	const colorSettings = {
 		second: {
 			on: {
@@ -151,17 +160,21 @@ else {
 		}
 	};
 
-	//start the clock here
-	var count = 0;
+	//Sets the keyboard to automatically updates after each change, might make it only do it at the end later.
+	wooting_rgb_array_auto_update(true);
 
+	//start the clock here
 	setInterval(() => {
+		//Generates the arrays for each column using moment to find real time, then converts to a binary array
 		let binaryArraySecondDigit = ((""+(parseInt((moment().second()%10).toString(2)))).split('').map(Number));
 		let binaryArraySecondTens = (""+(parseInt((Math.floor(moment().second()/10)).toString(2)))).split('').map(Number);
 		let binaryArrayMinuteDigit = ((""+(parseInt((moment().minute()%10).toString(2)))).split('').map(Number));
 		let binaryArrayMinuteTens = (""+(parseInt((Math.floor(moment().minute()/10)).toString(2)))).split('').map(Number);
 		let binaryArrayHourDigit = ((""+(parseInt((moment().hour()%10).toString(2)))).split('').map(Number));
 		let binaryArrayHourTens = (""+(parseInt((Math.floor(moment().hour()/10)).toString(2)))).split('').map(Number);
-	
+
+
+		//Checks to make sure each array is at the correcnt length, otherwise it adds zeroes to the front.
 		while (binaryArraySecondDigit.length < 4)
 		{
 			binaryArraySecondDigit.unshift(0);
@@ -192,9 +205,12 @@ else {
 			binaryArrayHourTens.unshift(0);
 		}
 
-
-
+		//Sets the colors on the keyboard
 		
+
+		//Updates the keyboard
+		//might add if it makes sense
+		//wootingRgb.wooting_rgb_array_update_keyboard()
 	}, 1000);
 
 
@@ -202,3 +218,8 @@ else {
 
 
 }
+
+// Make sure the lights go back to normal after process exits
+process.on('exit', (code) => {
+	wootingRgb.wooting_rgb_reset()
+});
