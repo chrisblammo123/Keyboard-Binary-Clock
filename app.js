@@ -5,7 +5,7 @@ moment().format();
 //dont know if this is needed
 
 // Define the functions from the DLL
-const wootingRgb = ffi.Library('./libs/wooting-rgb-sdk.dll', {
+const wootingRgb = ffi.Library('./libs/wooting-rgb-sdk64.dll', {
 	"wooting_rgb_kbd_connected": [ 'bool', [] ],
 	"wooting_rgb_reset": [ 'bool', [] ],
 	"wooting_rgb_array_update_keyboard": [ 'bool', [] ],
