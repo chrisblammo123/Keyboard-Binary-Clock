@@ -8,8 +8,10 @@ moment().format();
 const wootingRgb = ffi.Library('./libs/wooting-rgb-sdk.dll', {
 	"wooting_rgb_kbd_connected": [ 'bool', [] ],
 	"wooting_rgb_reset": [ 'bool', [] ],
+	"wooting_rgb_array_update_keyboard": [ 'bool', [] ],
 	"wooting_rgb_direct_set_key": [ 'bool', ['uint8', 'uint8', 'uint8', 'uint8', 'uint8'] ],
 	"wooting_rgb_direct_reset_key": [ 'bool', ['uint8', 'uint8'] ],
+	"wooting_rgb_array_set_single": [ 'bool', ['uint8', 'uint8', 'uint8', 'uint8', 'uint8'] ]
 });
 
 colors.setTheme({
