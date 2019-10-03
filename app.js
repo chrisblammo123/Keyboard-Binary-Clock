@@ -37,6 +37,7 @@ if (!keyboardConnected) {
 }
 else {
 	//Disgustingly large object with the key coordinates
+	const keySettingsArray = [[1,11],[2,10],[3,9],[4,9],[2,9],[3,8],[4,8],[1,8],[2,7],[3,6],[4,6],[2,6],[3,5],[4,5],[1,5],[2,4],[3,3],[4,3],[3,2],[4,2]];
 	const keySettings = {
 		secondOnesDigit: {
 			row: 4,
@@ -121,6 +122,7 @@ else {
 	};
 
 	//Disgustingly large object with the time colors
+	const colorSettingsArray = [];
 	const colorSettings = {
 		second: {
 			on: {
@@ -173,7 +175,6 @@ else {
 		let binaryArrayHourDigit = ((""+(parseInt((moment().hour()%10).toString(2)))).split('').map(Number));
 		let binaryArrayHourTens = (""+(parseInt((Math.floor(moment().hour()/10)).toString(2)))).split('').map(Number);
 
-
 		//Checks to make sure each array is at the correcnt length, otherwise it adds zeroes to the front.
 		while (binaryArraySecondDigit.length < 4)
 		{
@@ -205,8 +206,35 @@ else {
 			binaryArrayHourTens.unshift(0);
 		}
 
+		//Turns the seperate arrays into a large combined array.
+		let binaryArrayFull = binaryArraySecondDigit.concat(binaryArraySecondTens, binaryArrayMinuteDigit, binaryArrayMinuteTens, binaryArrayHourDigit, binaryArrayHourTens);
+
 		//Sets the colors on the keyboard
+		for(let i = 0; i < binaryArrayFull.length; i++)
+		{
+			if (binaryArrayFull[i])
+			{
+				//If it is a one
+				wootingRgb.wooting_rgb_array_set_single(keySettingsArray[i][0]/*row*/, keySettingsArray[i][1]/*column*/, red, green, blue);
+			}
+			else
+			{
+				//If it is a zero
+				wootingRgb.wooting_rgb_array_set_single(keySettingsArray[i][0]/*row*/, keySettingsArray[i][1]/*column*/, red, green, blue);
+			}
+		}
 		
+		/*
+		//Each one checks to see 
+		if (binaryArraySecondDigit[0])
+		{
+			wootingRgb.wooting_rgb_array_set_single(secondEightsDigit.row, secondEightsDigit.column, second.on.red, second.on.green, second.on.blue);
+		}
+		else
+		{
+			wootingRgb.wooting_rgb_array_set_single(secondEightsDigit.row, secondEightsDigit.column, second.off.red, second.off.green, second.off.blue);
+		}
+		*/
 
 		//Updates the keyboard
 		//might add if it makes sense
