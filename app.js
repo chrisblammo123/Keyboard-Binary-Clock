@@ -21,7 +21,7 @@ colors.setTheme({
 	debug    : ["yellow", "bold"]
 });
 
-const keyboardConnected = wootingRgb.wooting_rgb_kbd_connected()
+const keyboardConnected = wootingRgb.wooting_rgb_kbd_connected();
 
 //Sets the keyboard to a white color.
 for (let row = 0; row < 6; row++) {
@@ -40,133 +40,13 @@ if (!keyboardConnected) {
 else {
 	//Disgustingly large object with the key coordinates
 	const keySettingsArray = [[1,11],[2,10],[3,9],[4,9],[2,9],[3,8],[4,8],[1,8],[2,7],[3,6],[4,6],[2,6],[3,5],[4,5],[1,5],[2,4],[3,3],[4,3],[3,2],[4,2]];
-	const keySettings = {
-		secondOnesDigit: {
-			row: 4,
-			column: 9
-		},
-		secondTwosDigit: {
-			row: 3,
-			column: 9
-		},
-		secondFoursDigit: {
-			row: 2,
-			column: 10
-		},
-		secondEightsDigit: {
-			row: 1,
-			column: 11
-		},
-		secondOnesTens: {
-			row: 4,
-			column: 8
-		},
-		secondTwosTens: {
-			row: 3,
-			column: 8
-		},
-		secondFoursTens: {
-			row: 2,
-			column: 9
-		},
-		minuteOnesDigit: {
-			row: 4,
-			column: 6
-		},
-		minuteTwosDigit: {
-			row: 3,
-			column: 6
-		},
-		minuteFoursDigit: {
-			row: 2,
-			column: 7
-		},
-		minuteEightsDigit: {
-			row: 1,
-			column: 8
-		},
-		minuteOnesTens: {
-			row: 4,
-			column: 5
-		},
-		minuteTwosTens: {
-			row: 3,
-			column: 5
-		},
-		minuteFoursTens: {
-			row: 2,
-			column: 6
-		},
-		hourOnesDigit: {
-			row: 4,
-			column: 3
-		},
-		hourTwosDigit: {
-			row: 3,
-			column: 3
-		},
-		hourFoursDigit: {
-			row: 2,
-			column: 4
-		},
-		hourEightsDigit: {
-			row: 1,
-			column: 5
-		},
-		hourOnesTens: {
-			row: 4,
-			column: 2
-		},
-		hourTwosTens: {
-			row: 3,
-			column: 2
-		}
-	};
 
 	//Disgustingly large object with the time colors
 	const colorSettingsArrayOn = [[0,0,255],[0,255,0],[255,0,0]];
 	const colorSettingsArrayOff = [[127,127,255],[127,255,127],[255,127,127]];
-	const colorSettings = {
-		second: {
-			on: {
-				red: 0,
-				green: 0,
-				blue: 255
-			},
-			off: {
-				red: 127,
-				green: 127,
-				blue: 255
-			}
-		},
-		minute: {
-			on: {
-				red: 0,
-				green: 255,
-				blue: 0
-			},
-			off: {
-				red: 127,
-				green: 255,
-				blue: 127
-			}
-		},
-		hour: {
-			on: {
-				red: 255,
-				green: 0,
-				blue: 0
-			},
-			off: {
-				red: 255,
-				green: 127,
-				blue: 127
-			}
-		}
-	};
 
 	//Sets the keyboard to automatically updates after each change, might make it only do it at the end later.
-	wooting_rgb_array_auto_update(true);
+	//wooting_rgb_array_auto_update(true);
 
 	//start the clock here
 	setInterval(() => {
@@ -258,28 +138,11 @@ else {
 				}
 			}
 		}
-		
-		/*
-		//Each one checks to see 
-		if (binaryArraySecondDigit[0])
-		{
-			wootingRgb.wooting_rgb_array_set_single(secondEightsDigit.row, secondEightsDigit.column, second.on.red, second.on.green, second.on.blue);
-		}
-		else
-		{
-			wootingRgb.wooting_rgb_array_set_single(secondEightsDigit.row, secondEightsDigit.column, second.off.red, second.off.green, second.off.blue);
-		}
-		*/
 
 		//Updates the keyboard
 		//might add / remove if it makes sense
 		wootingRgb.wooting_rgb_array_update_keyboard()
 	}, 1000);
-
-
-
-
-
 }
 
 // Make sure the lights go back to normal after process exits
