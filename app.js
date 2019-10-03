@@ -122,7 +122,8 @@ else {
 	};
 
 	//Disgustingly large object with the time colors
-	const colorSettingsArray = [];
+	const colorSettingsArrayOn = [[0,0,255],[0,255,0],[255,0,0]];
+	const colorSettingsArrayOff = [[127,127,255],[127,255,127],[255,127,127]];
 	const colorSettings = {
 		second: {
 			on: {
@@ -215,12 +216,44 @@ else {
 			if (binaryArrayFull[i])
 			{
 				//If it is a one
-				wootingRgb.wooting_rgb_array_set_single(keySettingsArray[i][0]/*row*/, keySettingsArray[i][1]/*column*/, red, green, blue);
+
+				//Checks the current array index to determine if it is seconds (0-6), minutes (7-13), or hours (14-19)
+				if (0 <= i <= 6)
+				{
+					//Seconds
+					wootingRgb.wooting_rgb_array_set_single(keySettingsArray[i][0]/*Row*/, keySettingsArray[i][1]/*Column*/, colorSettingsArrayOn[0][0]/*Red*/, colorSettingsArrayOn[0][1]/*Green*/, colorSettingsArrayOn[0][2]/*Blue*/);
+				}
+				else if (7 <= i <= 13)
+				{
+					//Minutes
+					wootingRgb.wooting_rgb_array_set_single(keySettingsArray[i][0]/*Row*/, keySettingsArray[i][1]/*Column*/, colorSettingsArrayOn[1][0]/*Red*/, colorSettingsArrayOn[1][1]/*Green*/, colorSettingsArrayOn[1][2]/*Blue*/);
+				}
+				else if (14 <= i <= 19)
+				{
+					//Hours
+					wootingRgb.wooting_rgb_array_set_single(keySettingsArray[i][0]/*Row*/, keySettingsArray[i][1]/*Column*/, colorSettingsArrayOn[2][0]/*Red*/, colorSettingsArrayOn[2][1]/*Green*/, colorSettingsArrayOn[2][2]/*Blue*/);
+				}
 			}
 			else
 			{
 				//If it is a zero
-				wootingRgb.wooting_rgb_array_set_single(keySettingsArray[i][0]/*row*/, keySettingsArray[i][1]/*column*/, red, green, blue);
+				
+				//Checks the current array index to determine if it is seconds (0-6), minutes (7-13), or hours (14-19)
+				if (0 <= i <= 6)
+				{
+					//Seconds
+					wootingRgb.wooting_rgb_array_set_single(keySettingsArray[i][0]/*Row*/, keySettingsArray[i][1]/*Column*/, colorSettingsArrayOff[0][0]/*Red*/, colorSettingsArrayOff[0][1]/*Green*/, colorSettingsArrayOff[0][2]/*Blue*/);
+				}
+				else if (7 <= i <= 13)
+				{
+					//Minutes
+					wootingRgb.wooting_rgb_array_set_single(keySettingsArray[i][0]/*Row*/, keySettingsArray[i][1]/*Column*/, colorSettingsArrayOff[1][0]/*Red*/, colorSettingsArrayOff[1][1]/*Green*/, colorSettingsArrayOff[1][2]/*Blue*/);
+				}
+				else if (14 <= i <= 19)
+				{
+					//Hours
+					wootingRgb.wooting_rgb_array_set_single(keySettingsArray[i][0]/*Row*/, keySettingsArray[i][1]/*Column*/, colorSettingsArrayOff[2][0]/*Red*/, colorSettingsArrayOff[2][1]/*Green*/, colorSettingsArrayOff[2][2]/*Blue*/);
+				}
 			}
 		}
 		
@@ -237,8 +270,8 @@ else {
 		*/
 
 		//Updates the keyboard
-		//might add if it makes sense
-		//wootingRgb.wooting_rgb_array_update_keyboard()
+		//might add / remove if it makes sense
+		wootingRgb.wooting_rgb_array_update_keyboard()
 	}, 1000);
 
 
