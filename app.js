@@ -1,4 +1,4 @@
-const ffi = require("ffi")
+const ffi = require("ffi");
 const colors = require('colors');
 const moment = require('moment');
 moment().format();
