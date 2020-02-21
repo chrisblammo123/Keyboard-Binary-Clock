@@ -141,11 +141,11 @@ else {
 
 		//Updates the keyboard
 		//might add / remove if it makes sense
-		wootingRgb.wooting_rgb_array_update_keyboard()
+		wootingRgb.wooting_rgb_array_update_keyboard();
 	}, 1000);
 }
 
 // Make sure the lights go back to normal after process exits
 process.on('exit', (code) => {
-	wootingRgb.wooting_rgb_reset()
+	wootingRgb.wooting_rgb_reset();
 });
